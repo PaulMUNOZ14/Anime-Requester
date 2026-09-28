@@ -1,0 +1,16 @@
+
+node_modules/
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscodes/*
+!.vscode.extensions.json
+!.vscode/settings.json
+.tmp
+.bak
+.temp

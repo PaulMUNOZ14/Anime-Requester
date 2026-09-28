@@ -10,7 +10,13 @@ Anime Requester est un projet web proposant à l'utilisateur de requêter une ba
 
 ```
 Anime-requester/
-└── README.md
+├── index.html
+├── README.md
+├── scripts/
+│   └── main.js
+└── styles/
+    ├── normalize.css
+    └── styles.css
 ```
 
 ## Auteurs
