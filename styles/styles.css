@@ -1,8 +1,13 @@
 body{
   margin: 0;
-  background: #F9F8F6;
+  background: F9F8F6;
   color: #3B322A;
   font-family: 'Poppins', sans-serif;
+}
+
+.bandeau {
+  background: #C9B59C;
+  padding: 10px;
 }
 
 h1{

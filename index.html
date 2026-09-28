@@ -9,23 +9,26 @@
     <script src="scripts/main.js" defer></script>
   </head>
   <body>
-    <h1>Anime Requester</h1>
-    <div class="formulaire">
-      <form action="#" method="get">
-        <label for="cat">Rechercher par </label>
-        <select name="categorie" id="cat">
-          <option value=0>Titre</option>
-          <option value=1>Identifiant</option>
-          <option value="2">Classement</option>
-        </select>
+    <div class="bandeau">
+      <h1>Anime Requester</h1>
+      <div class="formulaire">
+        <form action="#" method="get">
+          <label for="cat">Rechercher par </label>
+          <select name="categorie" id="cat">
+            <option value=0>Titre</option>
+            <option value=1>Identifiant</option>
+            <option value="2">Classement</option>
+          </select>
 
-        <p>:</p>
+          <p>:</p>
 
-        <input type="text" name="entry" id="entry" placeholder="Titre de l'anime">
+          <input type="text" name="entry" id="entry" placeholder="Titre de l'anime">
 
-        <input id="subBtn" type="submit" value="Rechercher">
-      </form>
+          <input id="subBtn" type="submit" value="Rechercher">
+        </form>
+      </div>
     </div>
+    
     <div id="cardsList"></div>
   </body>
 </html>
