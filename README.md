@@ -14,9 +14,9 @@ Anime-requester/
 ```
 
 ## Auteurs
-BORDE Azelann
-DE MEYER Iria
-GUILBERT Joan
-MUNOZ Paul
+* BORDE Azelann
+* DE MEYER Iria
+* GUILBERT Joan
+* MUNOZ Paul
 
 BUT Informatique 2A - Développement WEB R3.01
