@@ -1,3 +1,22 @@
+body{
+  margin: 0;
+  background: F9F8F6;
+  color: #3B322A;
+  font-family: 'Poppins', sans-serif;
+}
+
+.bandeau {
+  background: #C9B59C;
+  padding: 10px;
+}
+
+h1{
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,14 +24,23 @@
 
 .formulaire {
   display: flex;
-  padding: 15px;
+  
   border-radius: 15px;
-  background-color: grey;
+  
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 12px 16px;
+  background: #D9CFC7;
+  
 }
 
 form {
   display: flex;
   width: 100%;
+  
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 form > * {
@@ -28,6 +56,50 @@ form > input {
   margin-left: 3px;
 }
 
+form p {
+  margin: 0;
+}
+
+select, input {
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #3B322A;
+  background: #F9F8F6;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
 #subBtn {
   margin-left: auto;
+  background: #C9B59C;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#subBtn:hover {
+  filter: brightness(0.95);
+}
+
+#entry {
+  flex: 1;
+  min-width: 140px;
+}
+
+#entry::placeholder {
+  color: #7A6E62;
+}
+
+select:focus,
+input:focus {
+  outline: 2px solid #C9B59C;
+}
+
+#cardsList {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
 }
