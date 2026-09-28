@@ -65,23 +65,41 @@ resetButton.addEventListener("click", () => {
 });
 
 // requete API
-function requeteAPI(url) {
-    null
+async function requeteAPI(url) {
+    try{
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "X-RapidAPI-Key": apiKey,
+                "X-RapidAPI-Host": API_HOST
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Erreur lors de la requête API :", error);
+        return null;
+    }
 }
 
 // Recherche par titre
-function rechercherParTitre(titre) {
-    null
+async function rechercherParTitre(titre) {
+    const url = `${API_URL}/anime?page=1&size=10&search=${encodeURIComponent(titre)}`;
+    afficherResultats(await requeteAPI(url));
 }
 
 // Recherche par identifiant
-function rechercherParIdentifiant(id) {
-    null
+async function rechercherParIdentifiant(id) {
+    const url = `${API_URL}/anime/${id}`;
+    afficherResultats(await requeteAPI(url));
 }
 
 // Recherche par classement
-function rechercherParClassement(classement) {
-    null
+async function rechercherParClassement(classement) {
+    const url = `${API_URL}/anime?page=1&size=1&sort=rank:${classement}`;
+    afficherResultats(await requeteAPI(url));
 }
 
 // Afficher les resultats
