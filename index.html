@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,8 +10,21 @@
   </head>
   <body>
     <h1>Anime Requester</h1>
-    <div id="form">
-      <div id="formContent"></div>
+    <div class="formulaire">
+      <form action="#" method="get">
+        <label for="cat">Rechercher par </label>
+        <select name="categorie" id="cat">
+          <option value=0>Titre</option>
+          <option value=1>Identifiant</option>
+          <option value="2">Classement</option>
+        </select>
+
+        <p>:</p>
+
+        <input type="text" name="entry" id="entry" placeholder="Titre de l'anime">
+
+        <input id="subBtn" type="submit" value="Rechercher">
+      </form>
     </div>
     <div id="cardsList"></div>
   </body>
