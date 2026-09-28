@@ -1,3 +1,5 @@
+import { Card } from "./card.js";
+
 require("dotenv").config();
 const apiKey = import.meta.env.VITE_API_KEY;
 const API_HOST = "anime-db.p.rapidapi.com";
