@@ -128,7 +128,7 @@ async function rechercherParTitre(titre) {
 
 // Recherche par identifiant
 async function rechercherParIdentifiant(id) {
-  const url = `${API_URL}/anime/${id}`;
+  const url = `${API_URL}/anime/${encodeURIComponent(id)}`;
   afficherResultats(await requeteAPI(url));
 }
 
