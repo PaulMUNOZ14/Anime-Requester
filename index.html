@@ -3,32 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="site web proposant à l'utilisateur de requêter une base de données d'anime via un formulaire.">
     <title>AnimeRequester</title>
     <link rel="stylesheet" href="styles/normalize.css" />
     <link rel="stylesheet" href="styles/styles.css" />
     <script src="scripts/main.js" type="module" defer></script>
   </head>
   <body>
-    <div class="bandeau">
-      <h1>Anime Requester</h1>
-      <div class="formulaire">
-        <form action="#" method="get">
-          <label for="cat">Rechercher par </label>
-          <select name="categorie" id="cat">
-            <option value=0>Titre</option>
-            <option value=1>Identifiant</option>
-            <option value="2">Classement</option>
-          </select>
+    <main>
+      <div class="bandeau">
+        <h1>Anime Requester</h1>
+        
+        <div class="formulaire">
+          <form action="#" method="get">
+            <label for="cat">Rechercher par </label>
 
-          <p>:</p>
+            <select name="categorie" id="cat">
+              <option value=0>Titre</option>
+              <option value=1>Identifiant</option>
+              <option value="2">Classement</option>
+            </select>
 
-          <input type="text" name="entry" id="entry" placeholder="Titre de l'anime">
+            <p>:</p>
 
-          <input id="subBtn" type="submit" value="Rechercher">
-        </form>
+            <input type="text" name="entry" id="entry" placeholder="Titre de l'anime">
+
+            <input id="subBtn" type="submit" value="Rechercher">
+          </form>
+        </div>
       </div>
-    </div>
-    
-    <div id="cardsList"></div>
+      
+      <div id="cardsList"></div>
+    </main>
   </body>
 </html>

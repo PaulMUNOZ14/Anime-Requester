@@ -1,8 +1,14 @@
 body{
   margin: 0;
+
   background: #2e2e2e;
   color: #810000;
  font-family: Tahoma, "Segoe UI", sans-serif; 
+
+  background: #F9F8F6;
+  color: #3B322A;
+  font-family: 'Poppins', sans-serif;
+
 }
 
 .bandeau {
@@ -113,4 +119,25 @@ input:focus {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 14px;
+}
+
+.popup {
+  position: absolute;
+  display: flex;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+}
+
+.popup > div {
+  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.popup h1 {
+  margin-bottom: 10px;
 }

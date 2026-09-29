@@ -1,5 +1,30 @@
 import { Card } from "./card.js";
 
+let API_KEY;
+
+const popup = document.createElement('div')
+popup.className = 'popup'
+
+popup.innerHTML = `
+  <div>
+    <h1>Veuilez rentrer votre clé API</h1>
+    <input id='APIkeyEntry' type='text' placeholder='Clé API'>
+    <button>Confirmer</button>
+  </div>
+`
+
+const apiBtn = popup.querySelector('button')
+apiBtn.addEventListener('click', () => {
+  let inp = popup.querySelector('input').value
+  if (inp){
+    API_KEY = inp
+    body.children[body.children.length - 1].remove()
+  }
+})
+
+const body = document.querySelector('body')
+body.appendChild(popup)
+
 const API_HOST = "anime-db.p.rapidapi.com";
 const API_URL = `https://${API_HOST}`;
 
@@ -73,7 +98,7 @@ async function requeteAPI(url) {
     const response = await fetch(url, {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": apiKey,
+        "X-RapidAPI-Key": API_KEY,
         "X-RapidAPI-Host": API_HOST,
       },
     });
