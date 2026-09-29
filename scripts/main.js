@@ -13,12 +13,20 @@ popup.innerHTML = `
   </div>
 `
 
-const apiBtn = popup.querySelector('button')
-apiBtn.addEventListener('click', () => {
+function confirmeAPI(){
   let inp = popup.querySelector('input').value
   if (inp){
     API_KEY = inp
     body.children[body.children.length - 1].remove()
+  }
+}
+
+const apiBtn = popup.querySelector('button')
+apiBtn.addEventListener('click', confirmeAPI)
+
+document.addEventListener('keydown', (e) => {
+  if (e.key == 'Enter' && body.children[body.children.length - 1] == popup){
+    confirmeAPI()
   }
 })
 
