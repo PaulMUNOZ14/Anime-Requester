@@ -123,19 +123,19 @@ async function requeteAPI(url) {
 // Recherche par titre
 async function rechercherParTitre(titre) {
   const url = `${API_URL}/anime?page=1&size=10&search=${encodeURIComponent(titre)}`;
-  afficherResultats(await requeteAPI(url));
+  return await requeteAPI(url);
 }
 
 // Recherche par identifiant
 async function rechercherParIdentifiant(id) {
   const url = `${API_URL}/anime/${encodeURIComponent(id)}`;
-  afficherResultats(await requeteAPI(url));
+  return await requeteAPI(url);
 }
 
 // Recherche par classement
 async function rechercherParClassement(classement) {
   const url = `${API_URL}/anime?page=1&size=1&sort=rank:${encodeURIComponent(classement)}`;
-  afficherResultats(await requeteAPI(url));
+  return await requeteAPI(url);
 }
 
 // Afficher les resultats
