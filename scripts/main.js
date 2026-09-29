@@ -1,14 +1,12 @@
 import { Card } from "./card.js";
 
-require("dotenv").config();
-const apiKey = import.meta.env.VITE_API_KEY;
 const API_HOST = "anime-db.p.rapidapi.com";
 const API_URL = `https://${API_HOST}`;
 
 const form = document.querySelector("form");
 const categorie = document.querySelector("#cat");
 const entry = document.querySelector("#entry");
-const cardsList = ducument.querySelector("#cardsList");
+const cardsList = document.querySelector("#cardsList");
 
 // BOUTON RESET
 const resetButton = document.createElement("button");
@@ -22,7 +20,7 @@ form.appendChild(resetButton);
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const category = categorie.value;
-  const entryValue = entry.value.trim();
+  const recherche = entry.value.trim();
 
   if (recherche === "") {
     afficherMessage("Veuillez entrer un nom d'anime ou de manga.", "error");
@@ -34,7 +32,7 @@ form.addEventListener("submit", async (event) => {
   try {
     let resultats;
 
-    switch (typeRechecher) {
+    switch (category) {
       case "0":
         resultats = await rechercherParTitre(recherche);
         break;
