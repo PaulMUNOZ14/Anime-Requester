@@ -1,14 +1,8 @@
-body{
+body {
   margin: 0;
-
-  background: #2e2e2e;
-  color: #810000;
- font-family: Tahoma, "Segoe UI", sans-serif; 
-
-  background: #F9F8F6;
+  background: #434343;
   color: #3B322A;
-  font-family: 'Poppins', sans-serif;
-
+  font-family: "Century Gothic", "Trebuchet MS", sans-serif;
 }
 
 .bandeau {
@@ -18,7 +12,7 @@ body{
 
 h1{
   margin: 0;
-  font-size: 26px;
+  font-size: 30px;
   color: #961a1a;
   text-align: center;
   font-family: "Century Gothic", "Trebuchet MS", sans-serif;
@@ -70,6 +64,7 @@ form > input {
 
 form label {
   font-weight: bold;
+  color: #810000;
 }
 
 form p {
