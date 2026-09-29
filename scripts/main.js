@@ -140,7 +140,15 @@ async function rechercherParClassement(classement) {
 
 // Afficher les resultats
 function afficherResultats(animes) {
-  const animesList = animes.data ?? [];
+  if (!animes) {
+    afficherMessage("Aucun résultat trouvé.");
+    return;
+  }
+
+  const animesList = Array.isArray(animes.data)
+    ? animes.data
+    : [animes];
+
   if (animesList.length === 0) {
     afficherMessage("Aucun résultat trouvé.");
     return;
