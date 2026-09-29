@@ -134,7 +134,7 @@ async function rechercherParIdentifiant(id) {
 
 // Recherche par classement
 async function rechercherParClassement(classement) {
-  const url = `${API_URL}/anime?page=1&size=1&sort=rank:${classement}`;
+  const url = `${API_URL}/anime?page=1&size=1&sort=rank:${encodeURIComponent(classement)}`;
   afficherResultats(await requeteAPI(url));
 }
 
