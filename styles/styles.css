@@ -81,21 +81,49 @@ select, input {
   padding: 8px 12px;
 }
 
+button,
 #subBtn {
-  margin-left: auto;
-  background: #810000;
+  font-family: inherit;
+  font-size: 0.9rem;
   font-weight: 500;
+  color: #eee;
+  background: #810000;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
   cursor: pointer;
   box-shadow: 2px 2px 0 #000000;
-  color: #dcd1d1;
+}
+
+#subBtn {
+  margin-left: auto; 
+}
+
+button:hover,
+#subBtn:hover {
+  filter: brightness(1.2);
+}
+
+button:active,
+#subBtn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000000;
 }
 
 select, input {
   color: #2b2424;
 }
 
-#subBtn:hover {
+button:hover {
   filter: brightness(0.95);
+}
+
+button {
+  background: transparent;
+  color: #810000;
+  box-shadow: none;
+  outline: 2px solid #810000;
+  outline-offset: -2px;
 }
 
 #entry {
@@ -138,6 +166,16 @@ input:focus {
   border-radius: 15px;
 }
 
+
 .popup h1 {
   margin-bottom: 10px;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  text-shadow: none;
+}
+
+
+.card{
+  border-radius: 10 px;
 }
