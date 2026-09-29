@@ -13,12 +13,20 @@ popup.innerHTML = `
   </div>
 `
 
-const apiBtn = popup.querySelector('button')
-apiBtn.addEventListener('click', () => {
+function confirmeAPI(){
   let inp = popup.querySelector('input').value
   if (inp){
     API_KEY = inp
     body.children[body.children.length - 1].remove()
+  }
+}
+
+const apiBtn = popup.querySelector('button')
+apiBtn.addEventListener('click', confirmeAPI)
+
+document.addEventListener('keydown', (e) => {
+  if (e.key == 'Enter' && body.children[body.children.length - 1] == popup){
+    confirmeAPI()
   }
 })
 
@@ -120,13 +128,13 @@ async function rechercherParTitre(titre) {
 
 // Recherche par identifiant
 async function rechercherParIdentifiant(id) {
-  const url = `${API_URL}/anime/${id}`;
+  const url = `${API_URL}/anime/${encodeURIComponent(id)}`;
   afficherResultats(await requeteAPI(url));
 }
 
 // Recherche par classement
 async function rechercherParClassement(classement) {
-  const url = `${API_URL}/anime?page=1&size=1&sort=rank:${classement}`;
+  const url = `${API_URL}/anime?page=1&size=1&sort=rank:${encodeURIComponent(classement)}`;
   afficherResultats(await requeteAPI(url));
 }
 
