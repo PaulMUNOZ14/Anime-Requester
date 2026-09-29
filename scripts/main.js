@@ -7,7 +7,7 @@ popup.className = 'popup'
 
 popup.innerHTML = `
   <div>
-    <h1>Veuilez rentrer votre clé API</h1>
+    <h1>Veuillez rentrer votre clé API</h1>
     <input id='APIkeyEntry' type='text' placeholder='Clé API'>
     <button>Confirmer</button>
   </div>
