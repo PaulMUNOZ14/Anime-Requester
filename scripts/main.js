@@ -98,7 +98,7 @@ async function requeteAPI(url) {
     const response = await fetch(url, {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": apiKey,
+        "X-RapidAPI-Key": API_KEY,
         "X-RapidAPI-Host": API_HOST,
       },
     });
