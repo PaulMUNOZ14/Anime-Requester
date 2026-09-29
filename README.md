@@ -56,7 +56,7 @@ Il est également possible d'utiliser un serveur local, notamment avec l'extensi
 2. Installer l'extension **Live Server**.
 3. Faire un clic droit sur **index.html**.
 4. Sélectionner "**Open with Live Server**".
-5. Le jeu s'ouvre automatiquement dans le navigateur à une adresse similaire à http://127.0.0.1:5500
+5. Le site s'ouvre automatiquement dans le navigateur à une adresse similaire à http://127.0.0.1:5500
 
 ## Auteurs
 * BORDE Azelann
