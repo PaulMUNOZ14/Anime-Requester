@@ -103,3 +103,24 @@ input:focus {
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 14px;
 }
+
+.popup {
+  position: absolute;
+  display: flex;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+}
+
+.popup > div {
+  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.popup h1 {
+  margin-bottom: 10px;
+}
