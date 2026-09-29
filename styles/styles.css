@@ -74,7 +74,7 @@ form p {
 select, input {
   font-family: inherit;
   font-size: 0.9rem;
-  color: #dcd1d1;
+  color: #e0dddd;
   background: #F9F8F6;
   border: none;
   border-radius: 8px;
@@ -87,6 +87,11 @@ select, input {
   font-weight: 500;
   cursor: pointer;
   box-shadow: 2px 2px 0 #000000;
+  color: #dcd1d1;
+}
+
+select, input {
+  color: #2b2424;
 }
 
 #subBtn:hover {
