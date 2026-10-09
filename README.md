@@ -24,6 +24,7 @@ Anime-requester/
 ├── index.html
 ├── README.md
 ├── scripts/
+│   ├── card.js
 │   └── main.js
 └── styles/
     ├── normalize.css
@@ -38,7 +39,7 @@ Lien du site :
 https://paulmunoz14.github.io/Anime-Requester/
 
 ## Déploiement en local
-Pour lancer le site en local, il suffit de cloner le dépôt GitHub puis  d'ouvrir le fichier `index.html` dans un navigateur.
+Pour lancer le site en local, il faut cloner le dépôt GitHub puis servir les fichiers via un serveur local : le site utilise des modules JavaScript, ils ne fonctionnent pas en ouvrant `index.html` directement depuis le navigateur (`file://`).
 
 ### Avec Git
 
@@ -46,8 +47,6 @@ Pour lancer le site en local, il suffit de cloner le dépôt GitHub puis  d'ouvr
 git clone https://github.com/PaulMUNOZ14/Anime-Requester.git
 cd Anime-Requester
 ```
-
-Ensuite, ouvrir le fichier `index.html` dans un navigateur
 
 ### Avec un serveur local
 Il est également possible d'utiliser un serveur local, notamment avec l'extension Live Server de Visual Studio Code
