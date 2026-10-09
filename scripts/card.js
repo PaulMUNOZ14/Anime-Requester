@@ -1,11 +1,12 @@
 export class Card {
-  constructor(title, genres, rank, image, synopsis, episodes) {
+  constructor(title, genres, rank, image, synopsis, episodes, id) {
     this.title = title;
     this.genres = genres;
     this.rank = rank;
     this.image = image;
     this.synopsis = synopsis;
     this.episodes = episodes;
+    this.id = id;
   }
 
   render() {
@@ -30,13 +31,26 @@ export class Card {
     imageElement.alt = `image de ${this.title}`;
     cardElement.appendChild(imageElement);
 
+    const detailsElement = document.createElement("div");
+    detailsElement.classList.add("card-details");
+    cardElement.appendChild(detailsElement);
+
+    const idElement = document.createElement("p");
+    idElement.innerHTML = `<strong>Identifiant :</strong> ${this.id}`;
+    detailsElement.appendChild(idElement);
+
     const episodesElement = document.createElement("p");
     episodesElement.innerHTML = `<strong>Nombres d'épisodes :</strong> ${this.episodes}`;
-    cardElement.appendChild(episodesElement);
+    detailsElement.appendChild(episodesElement);
 
     const rankElement = document.createElement("p");
-    rankElement.innerHTML = `<strong>Position dans le classement :</strong> ${this.rank}`;
-    cardElement.appendChild(rankElement);
+    rankElement.innerHTML = `<strong>Classement :</strong> ${this.rank}`;
+    detailsElement.appendChild(rankElement);
+
+    const genresLabel = document.createElement("p");
+    genresLabel.classList.add("genres-label");
+    genresLabel.innerHTML = `<strong>Genres :</strong>`;
+    detailsElement.appendChild(genresLabel);
 
     const genresList = document.createElement("ul");
 
@@ -53,11 +67,11 @@ export class Card {
       genreElement.textContent = "N/A";
       genresList.appendChild(genreElement);
     }
-    cardElement.appendChild(genresList);
+    detailsElement.appendChild(genresList);
 
     const synopsisElement = document.createElement("p");
     synopsisElement.innerHTML = `<strong>Synopsis :</strong> ${this.synopsis}`;
-    cardElement.appendChild(synopsisElement);
+    detailsElement.appendChild(synopsisElement);
 
     cardsList.appendChild(cardElement);
   }

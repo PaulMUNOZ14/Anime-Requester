@@ -2,8 +2,8 @@ import { Card } from "./card.js";
 
 let API_KEY;
 
-const popup = document.createElement('div')
-popup.className = 'popup'
+const popup = document.createElement("div");
+popup.className = "popup";
 
 popup.innerHTML = `
   <div>
@@ -11,27 +11,27 @@ popup.innerHTML = `
     <input id='APIkeyEntry' type='text' placeholder='Clé API'>
     <button>Confirmer</button>
   </div>
-`
+`;
 
-function confirmeAPI(){
-  let inp = popup.querySelector('input').value
-  if (inp){
-    API_KEY = inp
-    body.children[body.children.length - 1].remove()
+function confirmeAPI() {
+  let inp = popup.querySelector("input").value;
+  if (inp) {
+    API_KEY = inp;
+    popup.remove();
   }
 }
 
-const apiBtn = popup.querySelector('button')
-apiBtn.addEventListener('click', confirmeAPI)
+const apiBtn = popup.querySelector("button");
+apiBtn.addEventListener("click", confirmeAPI);
 
-document.addEventListener('keydown', (e) => {
-  if (e.key == 'Enter' && body.children[body.children.length - 1] == popup){
-    confirmeAPI()
+document.addEventListener("keydown", (e) => {
+  if (e.key == "Enter" && popup.isConnected) {
+    confirmeAPI();
   }
-})
+});
 
-const body = document.querySelector('body')
-body.appendChild(popup)
+const body = document.querySelector("body");
+body.appendChild(popup);
 
 const API_HOST = "anime-db.p.rapidapi.com";
 const API_URL = `https://${API_HOST}`;
@@ -128,13 +128,13 @@ async function rechercherParTitre(titre) {
 
 // Recherche par identifiant
 async function rechercherParIdentifiant(id) {
-  const url = `${API_URL}/anime?page=1&size=1&id=${encodeURIComponent(id)}`;
+  const url = `${API_URL}/anime/by-id/${encodeURIComponent(id)}`;
   return await requeteAPI(url);
 }
 
 // Recherche par classement
 async function rechercherParClassement(classement) {
-  const url = `${API_URL}/anime?page=1&size=1&sort=rank:${encodeURIComponent(classement)}`;
+  const url = `${API_URL}/anime/by-ranking/${encodeURIComponent(classement)}`;
   return await requeteAPI(url);
 }
 
@@ -145,9 +145,8 @@ function afficherResultats(animes) {
     return;
   }
 
-  const animesList = Array.isArray(animes.data)
-    ? animes.data
-    : [animes];
+  const donnees = Array.isArray(animes) ? animes : (animes.data ?? animes);
+  const animesList = Array.isArray(donnees) ? donnees : [donnees];
 
   if (animesList.length === 0) {
     afficherMessage("Aucun résultat trouvé.");
@@ -162,6 +161,7 @@ function afficherResultats(animes) {
       anime.image ?? "",
       anime.synopsis ?? "Synopsis indisponible.",
       anime.episodes ?? "N/A",
+      anime.id ?? "N/A",
     );
     card.render();
   });
