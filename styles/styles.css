@@ -121,8 +121,12 @@ button {
   background: transparent;
   color: #810000;
   box-shadow: none;
+  border: 2px solid #810000;
+}
+
+button:focus-visible {
   outline: 2px solid #810000;
-  outline-offset: -2px;
+  outline-offset: 2px;
 }
 
 #entry {
@@ -264,16 +268,23 @@ input:focus {
 }
 
 .card:has(> h2:hover) > .card-details,
-.card:has(> .card-details:hover) > .card-details {
+.card:has(> .card-details:hover) > .card-details,
+.card:has(> .card-details:focus) > .card-details {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
 .card:has(> h2:hover) > h2,
-.card:has(> .card-details:hover) > h2 {
+.card:has(> .card-details:hover) > h2,
+.card:has(> .card-details:focus) > h2 {
   top: 0;
   border-bottom: 2px solid #ffffff;
+}
+
+.card > .card-details:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -2px;
 }
 
 .message {

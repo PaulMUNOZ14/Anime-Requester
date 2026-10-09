@@ -33,6 +33,7 @@ export class Card {
 
     const detailsElement = document.createElement("div");
     detailsElement.classList.add("card-details");
+    detailsElement.tabIndex = 0;
     cardElement.appendChild(detailsElement);
 
     const idElement = document.createElement("p");
