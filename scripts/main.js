@@ -217,11 +217,9 @@ function afficherMessage(message) {
 }
 
 const boutonTheme = document.querySelector("#themeToggle");
-const iconeTheme = document.querySelector("#themeToggle .icone");
 
 function appliquerTheme(theme) {
   document.body.classList.toggle("clair", theme === "clair");
-  iconeTheme.textContent = theme === "clair" ? "☀︎" : "⏾";
 }
 
 appliquerTheme(sessionStorage.getItem("theme") ?? "sombre");
