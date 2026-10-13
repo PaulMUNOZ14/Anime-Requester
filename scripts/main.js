@@ -346,4 +346,7 @@ boutonTheme.addEventListener("click", () => {
   sessionStorage.setItem("theme", nouveau);
 });
 
-window.addEventListener('load', resizeOptions);
+window.addEventListener('load', () => {
+  resizeOptions();
+  if (API_KEY != "") getGenres();
+});
