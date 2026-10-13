@@ -101,6 +101,29 @@ resetButton.textContent = "Réinitialiser";
 
 form.appendChild(resetButton);
 
+// Textes liés à la catégorie de recherche
+const placeholders = {
+  "0": "Titre de l'anime",
+  "1": "Identifiant de l'anime",
+  "2": "Rang dans le classement",
+  "3": "Titre de l'anime",
+};
+
+const messagesVides = {
+  "0": "Veuillez entrer un nom d'anime ou de manga.",
+  "1": "Veuillez entrer un identifiant d'anime.",
+  "2": "Veuillez entrer un rang.",
+};
+
+function majPlaceholder() {
+  const texte = placeholders[categorie.value];
+
+  entry.placeholder = texte;
+  entry.setAttribute("aria-label", texte);
+}
+
+majPlaceholder();
+
 categorie.addEventListener('change', (event) => {
   if (event.target.value == 3) {
     entry.style.display = "none";
@@ -111,6 +134,7 @@ categorie.addEventListener('change', (event) => {
     openOptions(false);
   }
 
+  majPlaceholder();
   resizeOptions();
 });
 
@@ -138,7 +162,10 @@ form.addEventListener("submit", async (event) => {
   const recherche = entry.value.trim();
 
   if (recherche === "" && category != 3) {
-    afficherMessage("Veuillez entrer un nom d'anime ou de manga.", "error");
+    afficherMessage(
+      messagesVides[category] ?? "Veuillez entrer un terme de recherche.",
+      "error",
+    );
     return;
   }
 
