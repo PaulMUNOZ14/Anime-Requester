@@ -28,7 +28,10 @@ function confirmeAPI() {
 async function getGenres(){
   let genres;
   if (sessionStorage["genres"] != undefined) genre = sessionStorage["genres"];
-  else genres = await requeteAPI(`${API_URL}/genre`);
+  else {
+    genres = await requeteAPI(`${API_URL}/genre`);
+    sessionStorage.setItem("genres", genres);
+  };
   let i = 0;
 
   genres.forEach((g) => {
