@@ -283,8 +283,6 @@ async function rechercherParGenre() {
     if (inp.checked) listeGenresSelec.push(inp.parentNode.textContent);
   });
 
-  console.log(listeGenresSelec)
-
   if (listeGenresSelec.length == 0) return null;
 
   let str = listeGenresSelec[0];
@@ -292,7 +290,6 @@ async function rechercherParGenre() {
 
   const url = `${API_URL}/anime?page=1&size=10&genres=` + str;
 
-  console.log(url)
   return await requeteAPI(url);
 }
 
