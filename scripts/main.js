@@ -16,6 +16,7 @@ popup.innerHTML = `
 
 function confirmeAPI() {
   let inp = popup.querySelector("input").value;
+  
   if (inp) {
     API_KEY = inp;
     sessionStorage.setItem(API_KEY_STORAGE, API_KEY);
@@ -126,9 +127,31 @@ async function requeteAPI(url) {
         "X-RapidAPI-Host": API_HOST,
       },
     });
+
+    if (response.status === 401 || response.status === 403) {
+      API_KEY = "";
+      sessionStorage.removeItem(API_KEY_STORAGE);
+
+      if (!popup.isConnected) {
+        body.appendChild(popup);
+      }
+
+      popup.querySelector("input").value = "";
+
+      afficherMessage(
+        response.status === 401
+          ? "Clé API invalide. Veuillez saisir une clé valide."
+          : "Accès refusé. Vérifiez votre clé API, votre abonnement RapidAPI ou vos permissions.",
+        "error"
+      );
+
+      return null;
+    }
+
     if (!response.ok) {
       throw new Error(`Erreur HTTP: ${response.status}`);
     }
+    
     return await response.json();
   } catch (error) {
     console.error("Erreur lors de la requête API :", error);
