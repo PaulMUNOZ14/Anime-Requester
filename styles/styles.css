@@ -26,10 +26,9 @@ h1 {
 }
 
 .formulaire {
+  position: relative;
   display: flex;
-
   border-radius: 15px;
-
   max-width: 900px;
   margin: 24px auto;
   padding: 12px 16px;
@@ -129,13 +128,47 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-#entry {
+#entry, #genre {
   flex: 1;
   min-width: 140px;
 }
 
 #entry::placeholder {
   color: #686161;
+}
+
+#genre {
+  display: flex;
+  background-color: white;
+  border: none;
+  color: #686161;
+  visibility: collapse;
+}
+
+.options {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-height: 200px;
+  min-width: min-content;
+  overflow-y: auto;
+  z-index: 5;
+  background-color: white;
+  border: 1px solid #810000;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.options label {
+  color: black;
+  gap: 8px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.options label:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 select:focus,

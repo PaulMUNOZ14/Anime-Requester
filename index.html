@@ -18,15 +18,22 @@
           <form action="#" method="get">
             <label for="cat">Rechercher par </label>
 
-            <select name="categorie" id="cat">
-              <option value=0>Titre</option>
+            <select name="categorie" id="cat" autocomplete="off">
+              <option value=0 selected>Titre</option>
               <option value=1>Identifiant</option>
               <option value=2>Classement</option>
+              <option value=3>Genre</option>
             </select>
 
             <p>:</p>
 
             <input type="text" name="entry" id="entry" placeholder="Titre de l'anime" aria-label="Terme de recherche">
+
+            <button id="genre">Sélectionnez un/des genre(s)</button>
+
+            <div class="options">
+
+            </div>
 
             <input id="subBtn" type="submit" value="Rechercher">
           </form>

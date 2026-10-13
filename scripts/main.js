@@ -18,7 +18,24 @@ function confirmeAPI() {
   if (inp) {
     API_KEY = inp;
     popup.remove();
+    getGenres();
   }
+}
+
+async function getGenres(){
+  let genre;
+  if (sessionStorage["genres"] != undefined) genre = sessionStorage["genres"];
+  else genres = await requeteAPI(`${API_URL}/genre`);
+  let i = 0;
+
+  genres.forEach((g) => {
+    const lab = document.createElement('label');
+    lab.for = `genre${i}`;
+    lab.innerHTML = `
+      <input type="checkbox" id="genre${i}"/>${g["id"]}
+    `;
+    genre.appendChild(lab);
+  });
 }
 
 const apiBtn = popup.querySelector("button");
@@ -39,7 +56,36 @@ const API_URL = `https://${API_HOST}`;
 const form = document.querySelector("form");
 const categorie = document.querySelector("#cat");
 const entry = document.querySelector("#entry");
+const genre = document.querySelector(".options");
+const selectGenre = document.querySelector("#genre");
 const cardsList = document.querySelector("#cardsList");
+
+function resizeOptions(){
+  const elmt = (categorie.value == 3) ? selectGenre : entry;
+  const rect = elmt.getBoundingClientRect()
+
+  genre.style.width = rect.width + "px";
+  genre.style.top = elmt.offsetTop + elmt.offsetHeight + 2 + "px";
+  genre.style.left = elmt.offsetLeft + "px";
+}
+
+window.addEventListener('resize', resizeOptions);
+
+function openOptions(bool) {
+  open = bool != undefined ? bool : !open;
+
+  if (bool) {
+    genre.style.display = "flex";
+  } else {
+    genre.style.display = "none";
+  }
+}
+
+let open = false;
+selectGenre.addEventListener('click', (e) => {
+  e.preventDefault();
+  openOptions();
+})
 
 // BOUTON RESET
 const resetButton = document.createElement("button");
@@ -49,13 +95,30 @@ resetButton.textContent = "Réinitialiser";
 
 form.appendChild(resetButton);
 
+categorie.addEventListener('change', (event) => {
+  if (event.target.value == 3) {
+    entry.style.visibility = "collapse";
+    selectGenre.style.visibility = "visible";
+  } else if (entry.style.visibility == "collapse") {
+    entry.style.visibility = "visible";
+    selectGenre.style.visibility = "collapse";
+    openOptions(false);
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (open && !selectGenre.contains(e.target) && !genre.contains(e.target)) {
+    openOptions(false);
+  }
+});
+
 // Event du formulaire
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const category = categorie.value;
   const recherche = entry.value.trim();
 
-  if (recherche === "") {
+  if (recherche === "" && category != 3) {
     afficherMessage("Veuillez entrer un nom d'anime ou de manga.", "error");
     return;
   }
@@ -76,6 +139,10 @@ form.addEventListener("submit", async (event) => {
 
       case "2":
         resultats = await rechercherParClassement(recherche);
+        break;
+
+      case "3":
+        resultats = await rechercherParGenre();
         break;
 
       default:
@@ -138,6 +205,29 @@ async function rechercherParClassement(classement) {
   return await requeteAPI(url);
 }
 
+// Recherche par genre
+async function rechercherParGenre() {
+  const inputs = genre.querySelectorAll("input");
+
+  let listeGenresSelec = new Array();
+
+  inputs.forEach((inp) => {
+    if (inp.checked) listeGenresSelec.push(inp.parentNode.textContent);
+  });
+
+  console.log(listeGenresSelec)
+
+  if (listeGenresSelec.length == 0) return null;
+
+  let str = listeGenresSelec[0];
+  for (let i = 1; i < listeGenresSelec.length; i++) str += `%2C${listeGenresSelec[i]}`;
+
+  const url = `${API_URL}/anime?page=1&size=10&genres=` + str;
+
+  console.log(url)
+  return await requeteAPI(url);
+}
+
 // Afficher les resultats
 function afficherResultats(animes) {
   if (!animes) {
@@ -176,3 +266,5 @@ function afficherMessage(message) {
 
   cardsList.appendChild(paragraph);
 }
+
+window.addEventListener('load', resizeOptions);
