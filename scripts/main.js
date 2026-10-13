@@ -319,3 +319,5 @@ boutonTheme.addEventListener("click", () => {
   appliquerTheme(nouveau);
   sessionStorage.setItem("theme", nouveau);
 });
+
+window.addEventListener('load', resizeOptions);
