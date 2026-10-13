@@ -22,6 +22,7 @@ function confirmeAPI() {
     sessionStorage.setItem(API_KEY_STORAGE, API_KEY);
     popup.remove();
   }
+  cardsList.innerHTML = "";
 }
 
 const apiBtn = popup.querySelector("button");
@@ -151,7 +152,7 @@ async function requeteAPI(url) {
     if (!response.ok) {
       throw new Error(`Erreur HTTP: ${response.status}`);
     }
-    
+
     return await response.json();
   } catch (error) {
     console.error("Erreur lors de la requête API :", error);
