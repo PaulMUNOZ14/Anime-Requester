@@ -164,11 +164,10 @@ button:focus-visible {
 }
 
 #genre {
-  display: flex;
+  display: none;
   background-color: white;
   border: none;
   color: #686161;
-  visibility: collapse;
 }
 
 .options {
@@ -203,15 +202,16 @@ input:focus {
 }
 
 @media (max-width: 600px) {
-  #entry {
-    flex: 0 0 100%;
-    box-sizing: border-box;
-    margin-left: 0;
-  }
-
   #subBtn,
   form button {
     flex: 1;
+    margin-left: 0;
+  }
+
+  #entry,
+  #genre {
+    flex: 0 0 100%;
+    box-sizing: border-box;
     margin-left: 0;
   }
 }

@@ -103,13 +103,15 @@ form.appendChild(resetButton);
 
 categorie.addEventListener('change', (event) => {
   if (event.target.value == 3) {
-    entry.style.visibility = "collapse";
-    selectGenre.style.visibility = "visible";
-  } else if (entry.style.visibility == "collapse") {
-    entry.style.visibility = "visible";
-    selectGenre.style.visibility = "collapse";
+    entry.style.display = "none";
+    selectGenre.style.display = "flex";
+  } else {
+    entry.style.display = "";
+    selectGenre.style.display = "";
     openOptions(false);
   }
+
+  resizeOptions();
 });
 
 document.addEventListener('click', (e) => {
