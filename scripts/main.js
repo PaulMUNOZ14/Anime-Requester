@@ -176,3 +176,19 @@ function afficherMessage(message) {
 
   cardsList.appendChild(paragraph);
 }
+
+const boutonTheme = document.querySelector("#themeToggle");
+const iconeTheme = document.querySelector("#themeToggle .icone");
+
+function appliquerTheme(theme) {
+  document.body.classList.toggle("clair", theme === "clair");
+  iconeTheme.textContent = theme === "clair" ? "☀︎" : "☽";
+}
+
+appliquerTheme(sessionStorage.getItem("theme") ?? "sombre");
+
+boutonTheme.addEventListener("click", () => {
+  const nouveau = document.body.classList.contains("clair") ? "sombre" : "clair";
+  appliquerTheme(nouveau);
+  sessionStorage.setItem("theme", nouveau);
+});
