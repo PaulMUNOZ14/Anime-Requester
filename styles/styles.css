@@ -170,6 +170,20 @@ input:focus {
   outline: 2px solid #810000;
 }
 
+@media (max-width: 600px) {
+  #entry {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+  }
+
+  #subBtn,
+  form button {
+    flex: 1;
+    margin-left: 0;
+  }
+}
+
 #cardsList {
   max-width: 900px;
   margin: 0 auto;
@@ -294,16 +308,14 @@ input:focus {
   white-space: nowrap;
 }
 
-.card:has(> h2:hover) > .card-details,
-.card:has(> .card-details:hover) > .card-details,
+.card:hover > .card-details,
 .card:has(> .card-details:focus) > .card-details {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.card:has(> h2:hover) > h2,
-.card:has(> .card-details:hover) > h2,
+.card:hover > h2,
 .card:has(> .card-details:focus) > h2 {
   top: 0;
   border-bottom: 2px solid var(--card-text);

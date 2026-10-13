@@ -1,6 +1,7 @@
 import { Card } from "./card.js";
 
-let API_KEY;
+const API_KEY_STORAGE = "animeRequesterApiKey";
+let API_KEY = sessionStorage.getItem(API_KEY_STORAGE) || "";
 
 const popup = document.createElement("div");
 popup.className = "popup";
@@ -8,7 +9,7 @@ popup.className = "popup";
 popup.innerHTML = `
   <div>
     <h1>Veuillez rentrer votre clé API</h1>
-    <input id='APIkeyEntry' type='text' placeholder='Clé API' aria-label='Clé API'>
+    <input id='APIkeyEntry' type='password' placeholder='Clé API' aria-label='Clé API' autocomplete="off">
     <button>Confirmer</button>
   </div>
 `;
@@ -17,6 +18,7 @@ function confirmeAPI() {
   let inp = popup.querySelector("input").value;
   if (inp) {
     API_KEY = inp;
+    sessionStorage.setItem(API_KEY_STORAGE, API_KEY);
     popup.remove();
   }
 }
@@ -31,7 +33,10 @@ document.addEventListener("keydown", (e) => {
 });
 
 const body = document.querySelector("body");
-body.appendChild(popup);
+
+if (!API_KEY) {
+  body.appendChild(popup);
+}
 
 const API_HOST = "anime-db.p.rapidapi.com";
 const API_URL = `https://${API_HOST}`;
@@ -52,6 +57,17 @@ form.appendChild(resetButton);
 // Event du formulaire
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  // Si pas de clé API, on empêche la recherche
+  if (!API_KEY) {
+    if (!popup.isConnected) {
+      body.appendChild(popup);
+    }
+
+    afficherMessage("Veuillez renseigner votre clé API.", "error");
+    return;
+  }
+
   const category = categorie.value;
   const recherche = entry.value.trim();
 
