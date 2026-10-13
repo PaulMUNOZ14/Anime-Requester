@@ -9,7 +9,7 @@ popup.className = "popup";
 popup.innerHTML = `
   <div>
     <h1>Veuillez rentrer votre clé API</h1>
-    <input id='APIkeyEntry' type='text' placeholder='Clé API' aria-label='Clé API'>
+    <input id='APIkeyEntry' type='password' placeholder='Clé API' aria-label='Clé API' autocomplete="off">
     <button>Confirmer</button>
   </div>
 `;
