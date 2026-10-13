@@ -80,7 +80,7 @@ window.addEventListener('resize', resizeOptions);
 function openOptions(bool) {
   open = bool != undefined ? bool : !open;
 
-  if (bool) {
+  if (open) {
     genre.style.display = "flex";
   } else {
     genre.style.display = "none";
