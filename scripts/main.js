@@ -26,7 +26,7 @@ function confirmeAPI() {
 }
 
 async function getGenres(){
-  let genre;
+  let genres;
   if (sessionStorage["genres"] != undefined) genre = sessionStorage["genres"];
   else genres = await requeteAPI(`${API_URL}/genre`);
   let i = 0;
