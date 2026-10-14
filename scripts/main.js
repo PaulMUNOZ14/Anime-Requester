@@ -27,10 +27,10 @@ function confirmeAPI() {
 
 async function getGenres(){
   let genres;
-  if (sessionStorage["genres"] != undefined) genre = sessionStorage["genres"];
+  if (sessionStorage.getItem("genres") != null) genres = JSON.parse(sessionStorage.getItem("genres"));
   else {
     genres = await requeteAPI(`${API_URL}/genre`);
-    sessionStorage.setItem("genres", genres);
+    sessionStorage.setItem("genres", JSON.stringify(genres));
   };
   let i = 0;
 
@@ -40,6 +40,7 @@ async function getGenres(){
     lab.innerHTML = `
       <input type="checkbox" id="genre${i}"/>${g["id"]}
     `;
+    i++;
     genre.appendChild(lab);
   });
 }
@@ -327,6 +328,7 @@ function afficherResultats(animes) {
 
 // Afficher un message
 function afficherMessage(message) {
+  cardsList.innerHTML = "";
   const paragraph = document.createElement("p");
 
   paragraph.classList.add("message");
