@@ -30,7 +30,11 @@ async function getGenres(){
   if (sessionStorage.getItem("genres") != null) genres = JSON.parse(sessionStorage.getItem("genres"));
   else {
     genres = await requeteAPI(`${API_URL}/genre`);
-    sessionStorage.setItem("genres", JSON.stringify(genres));
+    if (genres) sessionStorage.setItem("genres", JSON.stringify(genres));
+    else {
+      sessionStorage.clear();
+      window.location.reload();
+    }
   };
   let i = 0;
 
