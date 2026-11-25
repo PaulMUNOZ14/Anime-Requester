@@ -1,6 +1,6 @@
 # Anime Requester
 
-### Pour accéder au site, [Cliquez ici](https://paulmunoz14.github.io/Anime-Requester/).
+### Pour accéder au site, [Cliquez ici](https://anime-requester.paulmunoz.fr/).
 
 ## Description
 
