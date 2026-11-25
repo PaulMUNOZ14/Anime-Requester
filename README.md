@@ -6,7 +6,7 @@
 
 Anime Requester est un projet web proposant à l'utilisateur de requêter une base de données d'anime via un formulaire.
 
-Les recherches d'anime sont effectuées grâce à l'API Anime db [Disponible ICI](https://rapidapi.com/brian.rofiq/api/anime-db/playground).
+Les recherches d'anime sont effectuées grâce à l'API Tenrai API [Disponible ICI](https://tenrai.org/).
 
 ## Technologies
 
@@ -36,7 +36,7 @@ Le site est déployé avec GitHub Pages.
 
 Lien du site :
 
-https://paulmunoz14.github.io/Anime-Requester/
+https://anime-requester.paulmunoz.fr/
 
 ## Déploiement en local
 Pour lancer le site en local, il faut cloner le dépôt GitHub puis servir les fichiers via un serveur local : le site utilise des modules JavaScript, ils ne fonctionnent pas en ouvrant `index.html` directement depuis le navigateur (`file://`).
